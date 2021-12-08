@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00818BC22760675B00665390 /* SwiftUIToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00818BC12760675B00665390 /* SwiftUIToDoAppApp.swift */; };
-		00818BC42760675B00665390 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00818BC32760675B00665390 /* ContentView.swift */; };
+		00818BC42760675B00665390 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00818BC32760675B00665390 /* LoginView.swift */; };
 		00818BC62760675D00665390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00818BC52760675D00665390 /* Assets.xcassets */; };
 		00818BC92760675D00665390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00818BC82760675D00665390 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		00818BBE2760675B00665390 /* SwiftUIToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00818BC12760675B00665390 /* SwiftUIToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIToDoAppApp.swift; sourceTree = "<group>"; };
-		00818BC32760675B00665390 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		00818BC32760675B00665390 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		00818BC52760675D00665390 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00818BC82760675D00665390 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				00818BC12760675B00665390 /* SwiftUIToDoAppApp.swift */,
-				00818BC32760675B00665390 /* ContentView.swift */,
+				00818BC32760675B00665390 /* LoginView.swift */,
 				00818BC52760675D00665390 /* Assets.xcassets */,
 				00818BC72760675D00665390 /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00818BC42760675B00665390 /* ContentView.swift in Sources */,
+				00818BC42760675B00665390 /* LoginView.swift in Sources */,
 				00818BC22760675B00665390 /* SwiftUIToDoAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
