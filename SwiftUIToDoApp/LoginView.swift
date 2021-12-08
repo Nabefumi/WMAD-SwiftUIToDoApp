@@ -6,23 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
     
     @State var isLoginMode = false
     
-    @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
 
-    
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 
                 VStack(spacing: 12) {
-                    Picker(selection: $isLoginMode, label: Text("Picker here")) {
+                    Picker(selection: $isLoginMode, label: Text("Picker here  ")) {
                         Text("Login")
                             .tag(true)
                         
@@ -43,8 +45,6 @@ struct LoginView: View {
                     }
                     
                     Group {
-                        TextField("User Name", text: $username)
-                            .autocapitalization(.none)
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
@@ -74,14 +74,19 @@ struct LoginView: View {
             .background(Color(.init(white: 0, alpha:  0.05)) .ignoresSafeArea())
 
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func handleAction() {
         if isLoginMode {
             print("Should log into Firebase with existing credentials")
         } else {
-            print("Register a ner account")
+            createNewAccount()
+//            print("Register a ner account")
         }
+    }
+    
+    private func createNewAccount() {
     }
 }
 
