@@ -6,23 +6,40 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+
+class FirebaseManager: NSObject {
+    
+    let auth: Auth
+    
+    static let shared = FirebaseManager()
+    
+    override init() {
+        FirebaseApp.configure()
+        
+        self.auth = Auth.auth()
+        
+        super.init()
+    }
+}
 
 struct LoginView: View {
     
     @State var isLoginMode = false
     
-    @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
 
-    
+    init() {
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 
                 VStack(spacing: 12) {
-                    Picker(selection: $isLoginMode, label: Text("Picker here")) {
+                    Picker(selection: $isLoginMode, label: Text("Picker here  ")) {
                         Text("Login")
                             .tag(true)
                         
@@ -43,8 +60,6 @@ struct LoginView: View {
                     }
                     
                     Group {
-                        TextField("User Name", text: $username)
-                            .autocapitalization(.none)
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
@@ -67,6 +82,9 @@ struct LoginView: View {
                                 .font(.system(size: 14, weight: .semibold))
                         }.background(Color.blue)
                     }
+                    
+                    Text(self.loginStatusMessge)
+                        .foregroundColor(.red)
                 }
                 .padding()
             }
@@ -74,13 +92,47 @@ struct LoginView: View {
             .background(Color(.init(white: 0, alpha:  0.05)) .ignoresSafeArea())
 
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func handleAction() {
         if isLoginMode {
-            print("Should log into Firebase with existing credentials")
+//            print("Should log into Firebase with existing credentials")
+            loginUser()
         } else {
-            print("Register a ner account")
+            createNewAccount()
+//            print("Register a ner account")
+        }
+    }
+    
+    private func loginUser() {
+        FirebaseManager.shared.auth.signIn(withEmail: email, password: password) {
+        result, err in
+        if let err = err {
+            print("Failed to create user", err)
+            self.loginStatusMessge = "Failed to create user: \(err)"
+            return
+        }
+        
+        print("Successfully logged in as user: \(result?.user.uid ?? "")")
+        self.loginStatusMessge = "Successfully logged in as user: \(result?.user.uid ?? "")"
+    }
+}
+    
+    @State var loginStatusMessge = ""
+    
+    private func createNewAccount() {
+
+        FirebaseManager.shared.auth.createUser(withEmail: self.email, password: password) {
+            result, err in
+            if let err = err {
+                print("Failed to create user", err)
+                self.loginStatusMessge = "Failed to create user: \(err)"
+                return
+            }
+            
+            print("Successfully created user: \(result?.user.uid ?? "")")
+            
         }
     }
 }
